@@ -9,8 +9,7 @@ function Category({ ...props }) {
   const navigate = useNavigate();
   const categoryName = decodeURIComponent(location?.pathname)?.replace(/\/+$/, '')?.split("/");
   const searchCat = categoryName[categoryName.length - 1];
-
-
+  
   useEffect(() => {
     const config = {
       headers: { 'content-type': 'application/json'  }

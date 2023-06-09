@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Admin() {
-    const [data, setData] = useState({ title: '', author: '', price1: '',price2: '', aboutbook: '', Hardback: '', Paperback: '' })
+    const [data, setData] = useState({ title: '', author: '', price1: '', price2: '', aboutbook: '', Hardback: '', Paperback: '' })
     const [reset, setReset] = useState('')
     const [file, setFile] = useState('');
     const [checked, setChecked] = useState(false);
@@ -19,24 +19,16 @@ function Admin() {
     //   title, author,price
     const handlechange = (e) => {
         const { name, value } = e.target;
-    //     const regex =/^[a-zA-Z0-9](?!.*--)[a-zA-Z0-9-]*[a-zA-Z0-9]$/g;
-    
-    //   const prevs =   value.match(regex);
         setData((prev) => {
-            return { ...prev, [name]: value  }
-           
+            return { ...prev, [name]: value }
         })
-        
-       
-        
     }
     // checkbox
     const handlecheck = (e) => {
         const { checked, value } = e.target;
         setChecked(!checked);
-        console.log(checked, value)
     }
-    // category
+    // category list
     const getInitialState = () => {
         const value = "Select the Category";
         return value;
@@ -45,7 +37,6 @@ function Admin() {
     const seletedoption = (e) => {
         setValue(e.target.value);
     }
-    
     // bookimage
     const handleimgchange = (e) => {
         console.log(e.target.files);
@@ -58,17 +49,17 @@ function Admin() {
         formData.append('title', data.title);
         formData.append('author', data.author);
         formData.append('Category', value);
-        formData.append('Hardback',data.Hardback)
+        formData.append('Hardback', data.Hardback)
         formData.append('price1', data.price1);
-        formData.append('Paperback',data.Paperback)
-        formData.append('price2',data.price2)
+        formData.append('Paperback', data.Paperback)
+        formData.append('price2', data.price2)
         formData.append('aboutbook', data.aboutbook);
-       
+
         formData.append('file', file);
         const config = {
             headers: { 'content-type': 'multipart/form-data' }
         }
-        axios.post("http://localhost:6688/api/lynas/addproduct",formData, config)
+        axios.post("http://localhost:6688/api/lynas/addproduct", formData, config)
             .then(res => {
                 console.log(res.data);
                 console.log(formData);
@@ -78,13 +69,10 @@ function Admin() {
     console.log(value)
 
     return (<>
-    
-        {/* bOOK information  start details */}
-        
         <div className="header">
-        <h1 className="headingin">Lynas Publications</h1>
+            <h1 className="headingin">LynasPublications</h1>
             <button type="button"> Dashboard</button>
-            <button type="button" onClick={navanotherpage}> Add book list</button>
+            <button type="button" onClick={navanotherpage}> Add booklist</button>
 
         </div>
         <section className="sign" id="sign">
@@ -92,7 +80,7 @@ function Admin() {
                 <h1 className="headingin"> Lynas Admin Portal</h1>
                 <h3>New Book Release To Update On Live Server</h3>
             </div>
-            <form  onSubmit={handleSubmit} method="get" className="personal-form" >
+            <form onSubmit={handleSubmit} method="get" className="personal-form" >
                 <div className="form-row">
                     <label >Title</label>
                     <input name="title" type="text" value={data.title} onChange={handlechange} placeholder="Please Enter your Title" />
@@ -109,26 +97,26 @@ function Admin() {
 
                 <div className="form-row">
                     <label >ISBN Hardback </label>
-                    <input name="Hardback" type="text" value={data.Hardback } placeholder=" 978-91-88364-33-3" onChange={handlechange} />
+                    <input name="Hardback" type="text" value={data.Hardback} placeholder=" 978-91-88364-33-3" onChange={handlechange} />
                 </div>
 
                 <div className="form-row">
                     <label >Price</label>
-                    <input name="price1"  type="number" value={data.price1} placeholder="$13.45" onChange={handlechange} />
+                    <input name="price1" type="number" value={data.price1} placeholder="$13.45" onChange={handlechange} />
                 </div>
                 <div className="form-row">
                     <label >ISBN Paperback </label>
-                    <input name="Paperback" type="text" value={data.Paperback } placeholder="978-91-8833-8" onChange={handlechange} />
+                    <input name="Paperback" type="text" value={data.Paperback} placeholder="978-91-8833-8" onChange={handlechange} />
                 </div>
                 <div className="form-row">
                     <label >Price</label>
-                    <input name="price2"  type="number" value={data.price2} placeholder="$14.95" onChange={handlechange} />
+                    <input name="price2" type="number" value={data.price2} placeholder="$14.95" onChange={handlechange} />
                 </div>
 
                 <div className="form-row">
                     <label >Category </label>
                     <select name="choosed" value={value} onChange={seletedoption}>
-                    <option value="Select the Category">Select the Category </option>
+                        <option value="Select the Category">Select the Category </option>
                         <option value="Biography">Biography </option>
                         <option value="Computer Science">Computer Science</option>
                         <option value="Literary Collections">Literary Collections </option>
@@ -151,7 +139,7 @@ function Admin() {
                         <input id="available" name="available" type="checkbox" value="true" onChange={handlecheck} />
                     </label>
                 </div>
-                
+
                 <span>I’m here by</span>
                 <div className="form-rows">
                     {/* <Link to="/list"> */}

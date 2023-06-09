@@ -18,7 +18,6 @@ function Bannerslide() {
         autoplay: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-       
     };
 
     return (
@@ -97,17 +96,6 @@ function Bannerslide() {
                                     /></div>
                                 </a>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
                         </Slider>
                     </div>
                 </div>

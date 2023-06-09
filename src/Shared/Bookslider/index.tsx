@@ -8,11 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 
 function Bookslider({ ...props }) {
-
     const navigate = useNavigate();
-
     const { heading,data } = props;
-    
     const settings = {
         dots: false,
         infinite: false,
